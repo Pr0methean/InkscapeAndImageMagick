@@ -14,6 +14,8 @@ on:
     tags: [ 'v*.*.*' ]
   pull_request:
     branches: [ "main" ]
+  workflow_dispatch:
+    # Empty
 
 env:
   # Use docker.io for Docker Hub if empty
@@ -41,10 +43,7 @@ jobs:
       # https://github.com/sigstore/cosign-installer
       - name: Install cosign
         if: github.event_name != 'pull_request'
-        uses: sigstore/cosign-installer@d6a3abf1bdea83574e28d40543793018b6035605
-        with:
-          cosign-release: 'v1.9.0'
-
+        uses: sigstore/cosign-installer@main
 
       # Workaround: https://github.com/docker/build-push-action/issues/461
       - name: Setup Docker buildx
