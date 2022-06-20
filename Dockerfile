@@ -4,4 +4,5 @@ RUN apt-get update \
   && add-apt-repository ppa:inkscape.dev/stable \
   && apt-get -y --no-install-recommends install inkscape \
   && rm -rf /var/lib/apt/lists/* \
-  && echo '. /usr/bin/env_parallel.bash' >> /root/.bashrc
+  && env_parallel --install
+  && bash -c "source /root/.bashrc" 
